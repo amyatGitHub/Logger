@@ -1,0 +1,4 @@
+e:\amyau.itbd\documents\visual studio 2015\Projects\Logger\Logger\bin\Debug\Logger.dll
+e:\amyau.itbd\documents\visual studio 2015\Projects\Logger\Logger\bin\Debug\Logger.pdb
+e:\amyau.itbd\documents\visual studio 2015\Projects\Logger\Logger\obj\Debug\Logger.dll
+e:\amyau.itbd\documents\visual studio 2015\Projects\Logger\Logger\obj\Debug\Logger.pdb
