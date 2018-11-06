@@ -37,27 +37,51 @@ namespace Logger
 
         private static void Log(string logMessage, string sourceFileName, string methodName, int lineNum)
         {
-            string currentDirectory = System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-            string filePath = ConfigurationSettings.AppSettings.AllKeys.Contains("logPath") ? ConfigurationSettings.AppSettings["logPath"] : "/log";
-            if (filePath[filePath.Length - 1] != '/')
-                filePath = filePath + '/';
-            if (filePath.IndexOf("/") != 0)
-                filePath = '/' + filePath;
-            filePath = currentDirectory + filePath;
-            CheckPath(filePath);
+            string currentDirectory;
 
-            string fileName = DateTime.Now.ToString("yyyyMMddHH");
-            string curFile = String.Format("{0}{1}.txt", filePath, fileName);
+            try
+            {
+                try
+                {
+                    if (Assembly.GetEntryAssembly() != null)
+                    {
+                        currentDirectory = System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+                    }
+                    else
+                    {
+                        currentDirectory = System.Web.HttpContext.Current.Server.MapPath("~");
+                    }
+                }
+                catch
+                {
+                    currentDirectory = string.Empty;
+                }
 
-            //write file
-            StreamWriter w = File.AppendText(curFile);
-            w.WriteLine("\r\n{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-            w.WriteLine("\r\n{0}\r\n", logMessage);
-            w.WriteLine("Method Name: {0}", methodName);
-            w.WriteLine("Source File: {0}", sourceFileName);
-            w.WriteLine("Line Number: {0}", lineNum);
-            w.WriteLine("-------------------------------");
-            w.Close();
+                string filePath = ConfigurationSettings.AppSettings.AllKeys.Contains("logPath") ? ConfigurationSettings.AppSettings["logPath"] : "/log";
+                if (filePath[filePath.Length - 1] != '/')
+                    filePath = filePath + '/';
+                if (filePath.IndexOf("/") != 0)
+                    filePath = '/' + filePath;
+                filePath = currentDirectory + filePath;
+                CheckPath(filePath);
+
+                string fileName = DateTime.Now.ToString("yyyyMMddHH");
+                string curFile = String.Format("{0}{1}.txt", filePath, fileName);
+
+                //write file
+                StreamWriter w = File.AppendText(curFile);
+                w.WriteLine("\r\n{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                w.WriteLine("\r\n{0}\r\n", logMessage);
+                w.WriteLine("Method Name: {0}", methodName);
+                w.WriteLine("Source File: {0}", sourceFileName);
+                w.WriteLine("Line Number: {0}", lineNum);
+                w.WriteLine("-------------------------------");
+                w.Close();
+            }
+            catch
+            {
+
+            }
         }
 
         private static void CheckPath(string path)
