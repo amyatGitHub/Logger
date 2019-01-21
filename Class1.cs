@@ -12,8 +12,7 @@ namespace Logger
     {
         public static void WriteLog(Exception ex,
         [System.Runtime.CompilerServices.CallerMemberName] string memberName = "",
-        [System.Runtime.CompilerServices.CallerFilePath] string sourceFilePath = "",
-        [System.Runtime.CompilerServices.CallerLineNumber] int sourceLineNumber = 0)
+        [System.Runtime.CompilerServices.CallerFilePath] string sourceFilePath = "")
         {
             string msg = string.Empty;
 
@@ -23,8 +22,15 @@ namespace Logger
                 msg += ex.InnerException + Environment.NewLine;
             }
             msg += ex.Source + Environment.NewLine;
+            
+             // Get stack trace for the exception with source file information
+            var st = new StackTrace(ex, true);
+            // Get the top stack frame
+            var frame = st.GetFrame(0);
+            // Get the line number from the stack frame
+            var line = frame.GetFileLineNumber();
 
-            Log(msg, sourceFilePath, memberName, sourceLineNumber);
+            Log(msg, sourceFilePath, memberName, sourceLineNumber, line);
         }
 
         public static void WriteLog(string msg,
