@@ -2,3 +2,9 @@ e:\amyau.itbd\documents\visual studio 2015\Projects\Logger\Logger\bin\Debug\Logg
 e:\amyau.itbd\documents\visual studio 2015\Projects\Logger\Logger\bin\Debug\Logger.pdb
 e:\amyau.itbd\documents\visual studio 2015\Projects\Logger\Logger\obj\Debug\Logger.dll
 e:\amyau.itbd\documents\visual studio 2015\Projects\Logger\Logger\obj\Debug\Logger.pdb
+C:\Users\kin\Desktop\Logger-master\Logger-master\obj\Debug\Logger.csprojAssemblyReference.cache
+C:\Users\kin\Desktop\Logger-master\Logger-master\obj\Debug\Logger.csproj.CoreCompileInputs.cache
+C:\Users\kin\Desktop\Logger-master\Logger-master\obj\Debug\Logger.dll
+C:\Users\kin\Desktop\Logger-master\Logger-master\obj\Debug\Logger.pdb
+C:\Users\kin\Desktop\Logger-master\Logger-master\bin\Debug\Logger.dll
+C:\Users\kin\Desktop\Logger-master\Logger-master\bin\Debug\Logger.pdb
